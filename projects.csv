@@ -1,0 +1,7 @@
+Project,Description,Department,Estimated_Cost_USD,Estimated_Carbon_Reduction_tons,ROI_Percentage,Priority_Score,Latitude,Longitude
+Solar Panel Installation,Install solar panels on all office buildings,Sustainability,500000,20000,15,85,32.0853,34.7818
+Energy-efficient Lighting,Replace all lighting with LED,Sustainability,150000,5000,20,80,32.0853,34.7818
+Recycling Program Expansion,Expand recycling to all branches,HR,80000,3000,10,70,32.0853,34.7818
+Water-saving Fixtures,Install low-flow faucets and toilets,Facilities,60000,2500,12,75,32.0853,34.7818
+Electric Vehicle Fleet,Transition company vehicle fleet to electric,Finance,300000,15000,18,90,32.0853,34.7818
+Green Building Certification,Obtain LEED certification for main office,Sustainability,100000,4000,14,80,32.0853,34.7818

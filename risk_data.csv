@@ -1,0 +1,7 @@
+﻿Risk_Category,Subcategory,Probability,Severity
+Physical,Flood,0.3,1000000
+Physical,Drought,0.2,500000
+Physical,Extreme Weather,0.25,750000
+Transitional,Policy Change,0.4,750000
+Transitional,Technology Shift,0.1,300000
+Transitional,Market Changes,0.15,450000

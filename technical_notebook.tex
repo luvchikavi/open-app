@@ -1,0 +1,161 @@
+% technical_notebook.tex
+
+\documentclass[12pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{titlesec}
+\usepackage{fontspec}
+
+% Set a modern, sans-serif font
+\setmainfont{Arial}
+
+\title{Bank Leumi Environmental Compliance and Management Tool \\
+       \large{Technical Notebook with Local Israeli Context \& Financial Decision-Making}}
+\author{Your Project Team}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section{Introduction}
+This technical notebook presents the Bank Leumi Environmental Compliance and Management Tool. 
+It integrates data on climate change, environmental impacts, and financial metrics 
+to guide decision-makers toward sustainable, compliant, and cost-effective strategies. 
+Key contributions come from Dr.\ Avi Luvchik and Oporto Carbon, 
+ensuring robust carbon data sources and compliance expertise.
+
+\subsection{Scope}
+The tool helps senior management navigate:
+\begin{itemize}
+    \item Complex ESG targets and regulations (e.g., TCFD, CSRD, Israeli requirements)
+    \item Climate risk analyses
+    \item Emissions tracking and reduction strategies
+    \item Financial feasibility of sustainability projects
+\end{itemize}
+
+\section{Data Architecture and LCA}
+Data is ingested via CSV or API, including internal ESG tasks, KPI data, and public carbon/offset data.
+A Life-Cycle Analysis (LCA) engine calculates Scope 1, 2, and 3 emissions based on standard (GHG Protocol) 
+or local Israeli emission factors.
+
+\subsection{Scope 1, 2, and 3}
+\begin{align*}
+  \text{Scope 1 Emissions} &= \sum (\text{Direct Fuel Consumption} \times \text{Emission Factor}), \\
+  \text{Scope 2 Emissions} &= \sum (\text{Purchased Electricity} \times \text{Grid Emission Factor}), \\
+  \text{Scope 3 Emissions} &= \sum (\text{Upstream + Downstream Activities}) \times \text{Various Factors}.
+\end{align*}
+
+\section{Dashboard Overview}
+The Streamlit-based dashboard (\texttt{app.py} with pages in \texttt{pages/}) 
+provides modules for:
+\begin{itemize}
+    \item \textbf{ESG Tasks}: Display \& track department responsibilities
+    \item \textbf{KPI Dashboard}: Real-time performance metrics
+    \item \textbf{Scenario Simulations}: Testing \emph{what-if} strategies
+    \item \textbf{Compliance Tracker}: TCFD, CSRD, local Israeli checklists
+\end{itemize}
+
+\section{Local Israeli Factors and Compliance}
+\label{sec:israeli-factors}
+
+\subsection{National-Level Emission Factors}
+To accurately reflect the local energy mix and transportation profiles, 
+the tool must incorporate Israel-specific factors:
+\begin{itemize}
+    \item \textbf{Electricity Grid Emission Factor}: Typically expressed in kg CO$_2$e per kWh, 
+    derived from Israel's mix of natural gas, coal, and renewables.
+    \item \textbf{Transportation Fuels}: Petrol, diesel, and alternative fuels 
+    have specific emission factors sanctioned by local authorities or ministries.
+    \item \textbf{Industrial Fuel Types}: For Israeli-based industries, 
+    unique factors may exist for heavy fuel oil or LNG used in manufacturing.
+\end{itemize}
+
+\subsection{Local Carbon Pricing and Taxation}
+Beginning January 1st, 2025, Israel plans to implement a \emph{carbon tax} regime. 
+Key considerations for the tool:
+\begin{itemize}
+    \item \textbf{Tax Rate per Ton of CO$_2$e}: The legislation sets a baseline 
+    which may rise incrementally over subsequent years.
+    \item \textbf{Sectoral Impact}: Electricity producers, large industrial facilities, 
+    and certain heavy transportation sectors.
+    \item \textbf{Integration in Financial Models}: The tool estimates potential 
+    compliance costs, projecting how these taxes affect the cost of running fleets, 
+    buildings, or production lines within Israel.
+\end{itemize}
+
+\subsection{Regulatory Updates and Local Compliance}
+\begin{itemize}
+    \item \textbf{MOEP Guidelines}: Ministry of Environmental Protection regularly updates 
+    reporting requirements and greenhouse gas inventories.
+    \item \textbf{National GHG Registry}: Integration of data from the official registry 
+    can aid validation and benchmarking.
+\end{itemize}
+
+Including these localized factors allows the bank's executives 
+to see how upcoming Israeli legislation directly influences the bottom line 
+and forecast carbon-related liabilities.
+
+\section{Financial Decision-Making and AI Capabilities}
+\label{sec:financial-decision-ai}
+
+\subsection{Cost vs.\ Carbon Reduction Modeling}
+A core function of this decision tool is to compare \emph{multiple project options} or 
+\emph{product choices} based on:
+\[
+  \text{Cost-Benefit Ratio} = \frac{\text{Total Cost}}{\text{Carbon Reduction}}
+\]
+This ratio helps rank interventions (e.g., energy-efficiency retrofits, 
+renewable energy installations, offset purchasing strategies) 
+by their \emph{carbon abatement cost}.
+
+\subsection{Task Prioritization}
+Using a weighted scoring model:
+\begin{equation}
+  \text{Priority Score} = \alpha \times \text{Cost Factor} 
+                         + \beta \times \text{Carbon Reduction Potential} 
+                         + \gamma \times \text{Regulatory Risk Factor}
+\end{equation}
+\begin{itemize}
+    \item \(\alpha, \beta, \gamma\) are coefficients reflecting the bank's strategic emphasis 
+    on cost, emissions reduction, or compliance obligations.
+    \item Tasks with \emph{higher Priority Score} rank first in recommended action.
+\end{itemize}
+
+\subsection{AI and Predictive Modeling}
+For more complex decisions, the tool can integrate \emph{machine learning}:
+\begin{itemize}
+    \item \textbf{Scenario Forecasting}: Evaluate how changing \emph{carbon tax} rates 
+    or external energy prices might alter cost-benefit outcomes.
+    \item \textbf{Portfolio Stress Testing}: Identify climate-related risks 
+    for financed projects (transition vs.\ physical risk).
+    \item \textbf{NLP Task Extraction}: From ESG reports, the tool automatically 
+    flags potential improvement actions, generating tasks with owners and deadlines.
+\end{itemize}
+
+\section{Summary and Next Steps}
+Incorporating \emph{Israel-specific emission factors}, \emph{local carbon taxation}, 
+and \emph{financial decision-making} with AI-based analytics significantly broadens 
+the decision tool's scope and accuracy. Next steps might include:
+\begin{itemize}
+    \item Expanding local fuel and grid databases
+    \item Integrating real-time carbon tax policy updates
+    \item Refining AI algorithms to continuously optimize cost vs.\ emissions outcomes
+\end{itemize}
+
+\appendix
+\section{Dashboard Appendix (Implementation Note)}
+To add these new sections within the existing Streamlit structure:
+\begin{itemize}
+    \item Create a new page, e.g.\ \texttt{pages/local_israeli_factors.py}, 
+    referencing Section~\ref{sec:israeli-factors}.
+    \item Add a link in the sidebar or as an \emph{Appendix} tab, 
+    without changing your existing main scripts.
+    \item Incorporate the financial modeling logic (Section~\ref{sec:financial-decision-ai}) 
+    in a separate function or optional module, 
+    ensuring minimal disruption to current workflows.
+\end{itemize}
+
+\end{document}
